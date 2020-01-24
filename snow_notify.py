@@ -19,18 +19,15 @@ api_key = config.api_key
 
 
 
-snow_request = requests.get(config.snow_url)
-snow_report = snow_request.json()
-print(snow_report)
-print("Lower snow report:",snow_report['lowersnow_in'],"inches.")
-if snow_report['newsnow_in'] >= 3:
-    print('You got Snow!')
-    print('The last snowfall size was',snow_report['lastsnow_in'],'inches.')
-    print('The snow type is',snow_report['conditions'],'.')
-else:
-    print('Hopefully soon!')
-    print('The last snowfall size was',snow_report['lastsnow_in'],'inches on',snow_report['lastsnow'])
-
 forecast_request = requests.get(config.forecast_url)
 forecast_report = forecast_request.json()
 print(forecast_report)
+print("Lower snow report:",forecast_report['lowersnow_in'],"inches.")
+if forecast_report['newsnow_in'] >= 3:
+    print('You got Snow!')
+    print('The last snowfall size was',forecast_report['lastsnow_in'],'inches.')
+    print('The snow type is',forecast_report['conditions'],'.')
+else:
+    print('Hopefully soon!')
+    print('The last snowfall size was',forecast_report['lastsnow_in'],'inches on',forecast_report['lastsnow'])
+
